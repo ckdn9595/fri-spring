@@ -7,13 +7,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 public class LoginCheck implements HandlerInterceptor {
-
+	// 이 클라스는 건들지 마시오
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String sid = (String) request.getSession().getAttribute("SID");
 		if(sid == null) {
-			response.sendRedirect("/fri/main.fri");
+			response.sendRedirect("/fri/hh/main.fri");
 		}else {
 			return true;
 		}
