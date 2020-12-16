@@ -6,10 +6,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
+@RequestMapping("/hh")
 public class HController {
 	@RequestMapping("/main.fri")
 	public String getMain(HttpSession s) {
 		
 		return "hh/main";
+	}
+	@RequestMapping("/joinpage.fri")
+	public String joinpage() {
+		
+		return "hh/joinpage";
 	}
 }
