@@ -13,7 +13,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<script type="text/javascript" src="/fri/js/main.js"></script>
+<script type="text/javascript" src="/fri/js/hh/main.js"></script>
 
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
@@ -47,7 +47,9 @@ input.dimension3{
 	height:35px;
 	margin-bottom:5px;
 }
-
+a.dimension2{
+	width:200px;
+}
 
 .clickable:hover{
 	background-color:beige;
@@ -107,9 +109,9 @@ body{
 	         <div class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="loginbtn">
 	         	<i class="fa fa-sign-in fa-fw w3-margin-right w3-text-theme"></i> 로그인
 	         </div>
-	         <div class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="joinbtn">
+	         <a class="w3-btn w3-border w3-hover-blue change05bgc dimension2" id="joinbtn" href="/fri/hh/joinpage.fri">
 	         	<i class="fa fa-user-plus fa-fw w3-margin-right w3-text-theme"></i> 회원가입
-	         </div>
+	         </a>
 	        </form>
 	      </div>
       </c:if>
