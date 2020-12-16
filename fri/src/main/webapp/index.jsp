@@ -10,7 +10,7 @@
 
 <body>
 
-<c:redirect url="/main.fri" />
+<c:redirect url="/hh/main.fri" />
 
 </body>
 </html>
