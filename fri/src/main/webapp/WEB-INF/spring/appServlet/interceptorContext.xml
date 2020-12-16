@@ -17,6 +17,7 @@
 			<mapping path="/**/*.fri"/>
 			<exclude-mapping path="/hh/main.fri"/>
 			<exclude-mapping path="/hh/joinpage.fri"/>
+			<exclude-mapping path="/hh/idCheck.fri"/>
 			<beans:ref bean="LoginCheck"/>
 		</interceptor>
 	</interceptors>

@@ -13,7 +13,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<script type="text/javascript" src="/fri/js/joinpage.js"></script>
+<script type="text/javascript" src="/fri/js/hh/joinpage.js"></script>
 <style>
 div.dimension1{
 	width:110px;
@@ -60,11 +60,13 @@ body{
 </head>
 
 <body class="">
-
+<c:if test="${not empty sessionScope.SID}">
+	<c:redirect url="/"></c:redirect>
+</c:if>
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px; min-width:800px;">    
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
-		<h1><a href="/fri/main.fri">냉장고를 부탁해!</a></h1>
+		<h1><a href="/fri/hh/main.fri">냉장고를 부탁해!</a></h1>
 	</div>
   <!-- The Grid -->
   <div class="w3-row">
