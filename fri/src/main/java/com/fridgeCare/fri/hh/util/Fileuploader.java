@@ -40,7 +40,8 @@ public class Fileuploader {
 		oriname = bno + left + i + right;
 		return oriname;
 	}
-	public void export() {
-		exportpath = "C:\\Users\\class02\\git\\fri-spring\\fri\\src\\main\\webapp\\resources\\upload\\";
+	public void export_avt(File f , String id) {
+//		String ext = f.getName().substring(f.getName().lastIndexOf('.'));
+		exportpath = "C:\\Users\\class02\\git\\fri-spring\\fri\\src\\main\\webapp\\resources\\img\\avatar\\" + id + "_t_" + f.getName();
 	}
 }

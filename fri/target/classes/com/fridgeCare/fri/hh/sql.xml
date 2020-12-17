@@ -21,4 +21,9 @@
 		select count(*) from member
 		where id = #{inputid} and pw = #{inputpw}
 	</select>
+	
+	<select id="getThumb" parameterType="string" resultType="string">
+		select tname from thumb
+		where tmno = (select mno from member where id = #{sid})
+	</select>
 </mapper>

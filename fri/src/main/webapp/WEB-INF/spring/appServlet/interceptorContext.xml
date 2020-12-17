@@ -21,6 +21,7 @@
 			<exclude-mapping path="/hh/mailcheck.fri"/>
 			<exclude-mapping path="/hh/joinproc.fri"/>
 			<exclude-mapping path="/hh/logincheck.fri"/>
+			<exclude-mapping path="/hh/logout.fri"/>
 			<beans:ref bean="LoginCheck"/>
 		</interceptor>
 	</interceptors>

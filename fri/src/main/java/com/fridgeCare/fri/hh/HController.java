@@ -74,6 +74,7 @@ public class HController {
 				Thumbnail thumb = new Thumbnail(f.getPath());
 				f = thumb.make(100, 100);
 			}
+			// export
 		}
 		cnt = hdao.joinproc(ivo);
 		if(cnt == 0) {
@@ -94,6 +95,13 @@ public class HController {
 		}else {
 			s.setAttribute("SID", ivo.getInputid());
 		}
+		mv.setView(rv);
+		return mv;
+	}
+	@RequestMapping("/logout.fri")
+	public ModelAndView logout(ModelAndView mv , RedirectView rv , HttpSession s) {
+		rv.setUrl("/fri/");
+		s.removeAttribute("SID");
 		mv.setView(rv);
 		return mv;
 	}

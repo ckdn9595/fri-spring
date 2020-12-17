@@ -7,4 +7,7 @@ $(function(){
 	$('#loginbtn').click(function(){
 		$('#loginform').submit();
 	});
+	$('#logoutbtn').click(function(){
+		$(location).attr('href' , '/fri/hh/logout.fri');
+	});
 });
