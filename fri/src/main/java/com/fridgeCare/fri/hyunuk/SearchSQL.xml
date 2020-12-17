@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sSQL">
+
+	<!-- 재료 조회 -->
+	<select id="selIngred">
+		SELECT
+			*
+		FROM
+			ingredient
+	</select>
+	
+	<!-- 게시물 조회 -->
+	<select id="selBoard" resultType="sVO">
+	SELECT 
+		bd.bno, bd.title, bd.bmno, bd.lcount, r.time, r.ingred, m.tno,(m.dir || m.tname) mdir, (b.dir || b.tname) bdir 
+	FROM 
+		BOARD bd, member, resipi r, thumb m, thumb b 
+	WHERE 
+		bmno = mno 
+		AND m.tmno = mno 
+		AND bd.rno = r.rno 
+		AND b.tno = bd.imgno 
+		AND bd.isshow = 'Y'
+		AND r.INGRED LIKE( ? ) 
+	</select>
+	
+	<!-- 조회수 조회 -->
+	<select id="selCnt" resultType="int">
+		SELECT 
+			count(*) cnt 
+		FROM 
+			resipi 
+		WHERE 
+			category = #{category} 
+	</select>
+	
+	<update id="increCnt" parameterType="sVO">
+		UPDATE 
+			BOARD 
+		SET 
+			CNT = CNT + 1 
+		WHERE 
+			bno = #{bno} 
+	</update>
+	
+	<select id="selCategory" resultType="sVO">
+		SELECT  
+		    bd.bno, bd.title, bd.bmno, bd.lcount,  r.time, r.ingred, m.tno,(m.dir || m.tname) mdir, (b.dir || b.tname) bdir  
+		FROM  
+		    BOARD bd, member, resipi r, thumb m, thumb b  
+		WHERE  
+		    bmno = mno  
+		    AND m.tmno = mno  
+		    AND bd.rno = r.rno  
+		    AND b.tno = bd.imgno  
+		    AND category = #{category} ;  
+	</select>
+</mapper>
