@@ -20,4 +20,7 @@ public class DAO {
 	public int logincheck(InputVO ivo) {
 		return sqlSession.selectOne("hsql.logincheck", ivo);
 	}
+	public String getThumb(String sid) {
+		return sqlSession.selectOne("hsql.getThumb", sid);
+	}
 }

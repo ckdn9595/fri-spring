@@ -17,7 +17,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.fridgeCare.fri.hh.util.Fileuploader;
 import com.fridgeCare.fri.hh.util.Thumbnail;
-import com.fridgeCare.fri.hh.vo.MemberVO;
 import com.fridgeCare.fri.hh.vo.InputVO;
 import com.fridgeCare.fri.hh.vo.ThumbVO;
 @Controller
@@ -28,7 +27,16 @@ public class HController {
 	DAO hdao;
 	@RequestMapping("/main.fri")
 	public String getMain(HttpSession s) {
+		String sid = (String) s.getAttribute("SID");
 		
+		if(sid != null) {
+			String tname = hdao.getThumb(sid);
+			if(tname == null) {
+				s.setAttribute("AVT", "noimage.jpg");
+			}else {
+				s.setAttribute("AVT", sid);
+			}
+		}
 		return "hh/main";
 	}
 	@RequestMapping("/joinpage.fri")
