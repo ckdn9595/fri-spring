@@ -1,14 +1,31 @@
 package com.fridgeCare.fri.hh;
 
 
+import java.io.File;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.fridgeCare.fri.hh.util.Fileuploader;
+import com.fridgeCare.fri.hh.util.Thumbnail;
+import com.fridgeCare.fri.hh.vo.MemberVO;
+import com.fridgeCare.fri.hh.vo.InputVO;
+import com.fridgeCare.fri.hh.vo.ThumbVO;
 @Controller
 @RequestMapping("/hh")
 public class HController {
+	int cnt;
+	@Autowired
+	DAO hdao;
 	@RequestMapping("/main.fri")
 	public String getMain(HttpSession s) {
 		
@@ -23,10 +40,53 @@ public class HController {
 	@ResponseBody
 	public String idcheck(String id) {
 		String view = "{\"result\" : \"NO\"}";
-//		int cnt = mDao.idcheck(id);
-//		if(cnt == 0) {
-//			view = "{\"result\" : \"OK\"}";
-//		}
+		cnt = hdao.idcheck(id);
+		if(cnt == 0) {
+			view = "{\"result\" : \"OK\"}";
+		}
 		return view;
+	}
+	@RequestMapping("/mailcheck.fri")
+	@ResponseBody
+	public HashMap<String, String> mailcheck(String mail) {
+		cnt = hdao.mailcheck(mail);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("result", (cnt == 0? "OK" : "NO"));
+		return map;
+	}
+	@RequestMapping("/joinproc.fri")
+	public ModelAndView joinproc(ModelAndView mv , RedirectView rv , HttpSession s , MultipartFile inputavt , InputVO ivo) {
+		rv.setUrl("/fri/");
+		ThumbVO tvo = new ThumbVO();
+		File f;
+		if(!inputavt.getOriginalFilename().equals("")) {
+			Fileuploader uploader = new Fileuploader(inputavt);
+			f = uploader.upload();
+			if(inputavt.getSize() > 6000) {
+				Thumbnail thumb = new Thumbnail(f.getPath());
+				f = thumb.make(100, 100);
+			}
+		}
+		cnt = hdao.joinproc(ivo);
+		if(cnt == 0) {
+			System.out.println("join fail");
+			rv.setUrl("/fri/hh/joinpage.fri");
+		}else {
+			s.setAttribute("SID", ivo.getInputid());
+		}
+		mv.setView(rv);
+		return mv;
+	}
+	@RequestMapping("/logincheck.fri")
+	public ModelAndView logincheck(ModelAndView mv , RedirectView rv , HttpSession s , InputVO ivo) {
+		rv.setUrl("/fri/");
+		cnt = hdao.logincheck(ivo);
+		if(cnt == 0) {
+			rv.setUrl("/fri/hh/main.fri?fail");
+		}else {
+			s.setAttribute("SID", ivo.getInputid());
+		}
+		mv.setView(rv);
+		return mv;
 	}
 }

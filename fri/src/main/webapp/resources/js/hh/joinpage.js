@@ -19,14 +19,14 @@ $(function(){
 					if(c){
 						$('#idcheckbtn').addClass('w3-hide');
 						$('#idresetbtn').removeClass('w3-hide');
-						$('#inputid').addClass('w3-disabled');
-						$('#submitbtn').removeClass('w3-disabled');
+						$('#inputid').attr('readonly' , true);
+						$('#submitbtn').attr('disabled' , false);
 					}else{
-						$('#submitbtn').addClass('w3-disabled');
+						$('#submitbtn').attr('disabled' , true);
 					}
 				}else{
 					alert('이미 사용중인 아이디입니다');
-					$('#submitbtn').addClass('w3-disabled');
+					$('#submitbtn').attr('disabled' , true);
 				}
 			} ,
 			error:function(){
@@ -37,8 +37,8 @@ $(function(){
 	$('#idresetbtn').click(function(){
 		$('#idresetbtn').addClass('w3-hide');
 		$('#idcheckbtn').removeClass('w3-hide');
-		$('#submitbtn').addClass('w3-disabled');
-		$('#inputid').removeClass('w3-disabled');
+		$('#submitbtn').attr('disabled' , true);
+		$('#inputid').attr('readonly' , false);
 	});
 	$('#mailcheckbtn').click(function(){
 		var smail = $('#inputmail').val();
@@ -46,7 +46,7 @@ $(function(){
 			return;
 		}
 		$.ajax({
-			url:'/fri/mailCheck.fri' ,
+			url:'/fri/hh/mailcheck.fri' ,
 			type:'POST' ,
 			dataType:'json' ,
 			data:{
@@ -56,21 +56,23 @@ $(function(){
 				if(data.result == 'OK'){
 					var c = confirm('사용가능한 메일입니다\n사용하시겠습니까?');
 					if(c){
-						$('#mailcheckbtn').addClass('w3-hide');
-						$('#inputmail').addClass('w3-disabled');
-						$('#submitbtn').removeClass('w3-disabled');
+					//	$('#mailcheckbtn').addClass('w3-hide');
+						$('#submitbtn').attr('disabled' , false);
 					}else{
-						$('#submitbtn').addClass('w3-disabled');
+						$('#submitbtn').attr('disabled' , true);
 					}
 				}else{
 					alert('이미 사용중인 메일입니다');
-					$('#submitbtn').addClass('w3-disabled');
+					$('#submitbtn').attr('disabled' , true);
 				}
 			} ,
 			error:function(){
 				alert('잠시후 다시 시도해주십시오');
 			}
 		})
+	});
+	$('#inputmail').keyup(function(){
+		$('#submitbtn').attr('disabled' , true);
 	});
 	$('#inputpwre').keyup(function(){
 		var pwrule = /^[a-zA-Z1-9]{6,12}$/;

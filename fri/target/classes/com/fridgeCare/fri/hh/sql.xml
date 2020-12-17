@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hSQL">
+<mapper namespace="hsql">
+	<select id="idcheck" resultType="int" parameterType="string">
+		select count(*) from member where id = #{id}
+	</select>
 	
+	<select id="mailcheck" resultType="int" parameterType="string">
+		select count(*) from member where id = #{mail}
+	</select>
+	
+	<select id="insertmember" parameterType="ivo">
+		insert INTO member(
+		mno , id , pw , mail , age , gen , local , tel) VALUES(
+		(select max(mno) from member)+1 , #{inputid} , #{inputpw} , #{inputmail} , #{inputage} , #{inputgen} , #{inputloc} , #{inputtel}
+		)
+	</select>
+	
+	<select id="logincheck" parameterType="ivo" resultType="int">
+		select count(*) from member
+		where id = #{inputid} and pw = #{inputpw}
+	</select>
 </mapper>

@@ -73,7 +73,7 @@ body{
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
-		<h1><a href="/fri/main.fri">냉장고를 부탁해!</a></h1>
+		<h1><a href="/fri/hh/main.fri">냉장고를 부탁해!</a></h1>
 	</div>
   <!-- The Grid -->
   <div class="w3-row" style="min-width:1000px">
@@ -84,7 +84,7 @@ body{
 	      <div class="w3-card w3-round w3-white">
 	        <div class="w3-container">
 	         <h4 class="w3-center">My Profile</h4>
-	         <p class="w3-center"><img src="/fri/img/avatar/${AVT}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+	         <p class="w3-center"><img src="/fri/img/thumb/noimage.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
 	         <hr>
 	         <p><i class="fa fa-id-badge fa-fw w3-margin-right w3-text-theme"></i>${SID}</p>
 	         
@@ -96,7 +96,7 @@ body{
       <!-- 로그인 안했을때 -->
       <c:if test="${empty SID}">
 	      <div class="w3-card w3-round w3-white">
-	        <form class="w3-container w3-padding" method="get" action="/fri/logincheck.fri" id="loginform">
+	        <form class="w3-container w3-padding" method="get" action="/fri/hh/logincheck.fri" id="loginform">
 	        <div class="w3-padding">
 	        	<div class="inline dimension3">ID</div>
 	        	<input name="inputid" class="dimension2">

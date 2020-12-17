@@ -98,7 +98,7 @@ body{
     <!-- Middle Column --> <!-- 작업할 곳 -->
     <div class="w3-col m9" style="min-width:700px">
       
-      <form class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding" method="post" action="/fri/joinproc.fri" encType="multipart/form-data">
+      <form class="w3-container w3-card w3-round w3-margin-bottom w3-margin-left w3-margin-right w3-padding" method="post" action="/fri/hh/joinproc.fri" encType="multipart/form-data">
 		<div class="w3-col m10 w3-margin-left" style="min-width:660px">
 			<div class="dimension1 w3-padding floatleft w3-right-align">ID</div>
 			<input name="inputid" class="floatleft dimension1" id="inputid" required>
@@ -129,7 +129,6 @@ body{
 			<div class="dimension1 w3-padding floatleft w3-right-align">이메일</div>
 			<input name="inputmail" class="floatleft dimension1" required id="inputmail">
 			<div class="w3-light-blue w3-round-large w3-center w3-padding-small w3-button w3-hover-cyan change05bgc margin8" id="mailcheckbtn">중복확인</div>
-			<div class="w3-padding floatleft w3-right-align"></div>
 		</div>
 		<div class="w3-col m10 w3-margin-left" style="min-width:660px">
 			<div class="dimension1 w3-padding floatleft w3-right-align">전화번호</div>
@@ -148,14 +147,14 @@ body{
 		<div class="w3-col m10 w3-margin-left" style="min-width:660px">
 			<div class="dimension1 w3-padding floatleft w3-right-align">거주지역</div>
 			<select name="inputloc" class="dimension1">
-				<option value="031">서울/경기
-				<option value="033">강원도
-				<option value="041">충청남도
-				<option value="043">충청북도
-				<option value="054">경상북도
-				<option value="055">경상남도
-				<option value="061">전남/제주
-				<option value="063">전라북도
+				<option value="1">서울/경기
+				<option value="2">강원도
+				<option value="3">충청남도
+				<option value="4">충청북도
+				<option value="5">경상북도
+				<option value="6">경상남도
+				<option value="7">전남/제주
+				<option value="8">전라북도
 			</select>
 		</div>
 		<div class="w3-col m10 w3-margin-left" style="min-width:660px">
@@ -164,7 +163,7 @@ body{
 		</div>
 		
 		<div class="w3-col m10 w3-center" style="min-width:660px">
-			<input class="w3-light-blue w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc margin8 w3-disabled" type="submit" id="submitbtn">
+			<input class="w3-light-blue w3-round-large w3-center w3-padding w3-button w3-hover-cyan change05bgc margin8" type="submit" id="submitbtn" disabled>
 		</div>
       </form>
       
