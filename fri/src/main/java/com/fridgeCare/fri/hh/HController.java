@@ -124,4 +124,29 @@ public class HController {
 		mv.setView(rv);
 		return mv;
 	}
+	@RequestMapping("/noticelist.fri")
+	public String getNoticeList(HttpSession s) {
+		String sid = (String) s.getAttribute("SID");
+		LatelyUploadVO luvo = hdao.getLUVO();
+		SideRankVO srvo = hdao.getWR();
+		if(luvo.getTname() == null) {
+			luvo.setTname("noimage.jpg");
+		}
+		if(luvo.getSavename() == null) {
+			luvo.setSavename("noimage.jpg");
+		}
+		s.setAttribute("LUVO", luvo);
+		s.setAttribute("WVO", srvo);
+		srvo = hdao.getMR();
+		s.setAttribute("MVO", srvo);
+		if(sid != null) {
+			String tname = hdao.getThumb(sid);
+			if(tname == null) {
+				s.setAttribute("AVT", "noimage.jpg");
+			}else {
+				s.setAttribute("AVT", tname);
+			}
+		}
+		return "hh/main";
+	}
 }
