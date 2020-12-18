@@ -73,12 +73,12 @@ body{
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
 	<div class="w3-col w3-card w3-margin-bottom w3-round">
-		<h1><a href="/fri/main.fri">냉장고를 부탁해!</a></h1>
+		<h1><a href="/fri/hh/main.fri">냉장고를 부탁해!</a></h1>
 	</div>
   <!-- The Grid -->
   <div class="w3-row" style="min-width:1000px">
     <!-- Left Column -->
-    <div class="w3-col m3" style="max-width:1400px;margin-top:20px; min-width:240px">
+    <div class="w3-col m3" style="max-width:1400px; min-width:240px">
       <!-- Profile -->
       <c:if test="${not empty SID}">
 	      <div class="w3-card w3-round w3-white">
@@ -96,7 +96,7 @@ body{
       <!-- 로그인 안했을때 -->
       <c:if test="${empty SID}">
 	      <div class="w3-card w3-round w3-white">
-	        <form class="w3-container w3-padding" method="get" action="/fri/logincheck.fri" id="loginform">
+	        <form class="w3-container w3-padding" method="get" action="/fri/hh/logincheck.fri" id="loginform">
 	        <div class="w3-padding">
 	        	<div class="inline dimension3">ID</div>
 	        	<input name="inputid" class="dimension2">
@@ -120,24 +120,8 @@ body{
       <div class="w3-round">
 		<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">My refri</div>
 		<form action="/fri/search.fri" method="get">
-			<input type="hidden" name="catagory" value="한">
-			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="한식">
-		</form>
-		<form action="/fri/search.fri" method="get">
-			<input type="hidden" name="catagory" value="중">
-			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="중식">
-		</form>
-		<form action="/fri/search.fri" method="get">
-			<input type="hidden" name="catagory" value="일">
-			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="일식">
-		</form>
-		<form action="/fri/search.fri" method="get">
-			<input type="hidden" name="catagory" value="양">
-			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="양식">
-		</form>
-		<form action="/fri/search.fri" method="get">
-			<input type="hidden" name="catagory" value="퓨">
-			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="퓨전">
+			<!-- <input type="hidden" name="catagory" value="한"> -->
+			<input class="w3-gray w3-round-large w3-center dimension3 w3-padding-small inline w3-button w3-hover-cyan change05bgc" type="submit" value="레시피 찾기">
 		</form>
 		<c:if test="${not empty SID}">
 			<div class="w3-blue w3-round-large w3-center dimension7 w3-padding w3-margin-top">Our refri</div>
@@ -173,7 +157,7 @@ body{
         <p>${LUVO.id}</p>
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-col">
-              <img src="/fri/img/boardimg/${LUVO.savename}" style="width:100%" alt="thumbsnail" class="w3-margin-bottom">
+              <img src="/fri/upload/${LUVO.savename}" style="width:100%" alt="thumbsnail" class="w3-margin-bottom">
             </div>
         </div>
       </form>
@@ -189,7 +173,7 @@ body{
         <form class="w3-container w3-btn w3-white" method="get" action="/fri/resipiPage.fri">
         	<input type="hidden" name="bno" value="${WVO.bno}">
           <p>주간 인기 레시피</p>
-          <img src="/fri/img/boardThumb/${WVO.tname}" alt="Thumb" style="width:100%;">
+          <img src="/fri/img/thumb/${WVO.tname}" alt="Thumb" style="width:100%;">
           <p><strong>${WVO.title}</strong></p>
           <p>${WVO.id}</p>
         </form>
@@ -200,7 +184,7 @@ body{
         <form class="w3-container w3-btn w3-white" method="get" action="/fri/resipiPage.fri">
         	<input type="hidden" name="bno" value="${MVO.bno}">
           <p>월간 인기 레시피</p>
-          <img src="/fri/img/boardThumb/${MVO.tname}" alt="Thumb" style="width:100%;">
+          <img src="/fri/img/thumb/${MVO.tname}" alt="Thumb" style="width:100%;">
           <p><strong>${MVO.title}</strong></p>
           <p>${MVO.id}</p>
         </form>
@@ -208,7 +192,7 @@ body{
       <br>
       
       
-      <div class="w3-card w3-round w3-white dimension1">
+      <div class="w3-card w3-round w3-white dimension1 w3-hide">
         <div class="w3-container">
         	<div class="w3-red h240 w3-margin-bottom">
 	        	<p>채팅내용 w3-red 는 기능 구현후 지울거임
@@ -232,7 +216,7 @@ body{
 
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>Footer</h5>
+  공지사항
 </footer>
 
 <footer class="w3-container w3-theme-d5">
